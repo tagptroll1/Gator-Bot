@@ -28,18 +28,8 @@ cogs = [
 for cog in cogs:
     bot.load_extension('cogs.' + cog)
 
-status = ['msg1', 'msg2', 'msg3']
-
 
 async def background_task():
-
-    """await bot.wait_until_ready()
-    msg = cycle(status)
-    while not bot.is_closed():
-        print('yess')
-        current_status = next(msg)
-        await bot.change_presence(activity=discord.Game(name=current_status))
-        await asyncio.sleep(5)"""
 
     await bot.wait_until_ready()
     while not bot.is_closed():
