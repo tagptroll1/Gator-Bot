@@ -1,4 +1,4 @@
-import secret
+import secrets
 import discord
 from discord.ext import commands
 import logging
@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO)
 bot = commands.Bot(command_prefix='bot.')
 bot.remove_command('help')
 
-TOKEN = secret.TOKEN
+TOKEN = secrets.TOKEN
 
 bot.owner_id = 263560579770220554
 
