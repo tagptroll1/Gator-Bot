@@ -43,31 +43,30 @@ class FunStuff:
 
     @commands.command()
     async def rps(self, ctx, c):
-        try:
-            ans = random.choice(['Rock', 'Paper', 'Scissor'])
-            # rock
-            if c in ['rock', 'r', 'Rock', 'R'] and ans == 'Rock':
-                await ctx.send('Bot says Rock, Its a tie ')
-            elif c in ['Paper', 'paper', 'p', 'P'] and ans == 'Rock':
-                await ctx.send('Bot says Rock, You win :) ')
-            elif c in ['Scissor', 'scissor', 's', 'S'] and ans == 'Rock':
-                await ctx.send('Bot says Rock, You loose :( ')
-            # paper
-            elif c in ['rock', 'r', 'Rock', 'R'] and ans == 'Paper':
-                await ctx.send('Bot says Paper, You lose :( ')
-            elif c in ['Paper', 'paper', 'p', 'P'] and ans == 'Paper':
-                await ctx.send('Bot says Paper, Its a tie ')
-            elif c in ['Scissor', 'scissor', 's', 'S'] and ans == 'Paper':
-                await ctx.send('Bot says Paper, You win :) ')
-            # scissor
-            elif c in ['rock', 'r', 'Rock', 'R'] and ans == 'Scissor':
-                await ctx.send('Bot says Scissor, You win :) ')
-            elif c in ['Paper', 'paper', 'p', 'P'] and ans == 'Scissor':
-                await ctx.send('Bot says Scissor, You lose :( ')
-            elif c in ['Scissor', 'scissor', 's', 'S'] and ans == 'Scissor':
-                await ctx.send('Bot says Scissor, Its a tie ')
-        except:
-            await ctx.send('Please enter your answer')
+        bot_answer = random.choice(("Rock", "Paper", "Scissor"))
+        
+        if c.lower() in ("rock", "r"):
+            player_answer = "Rock"
+        
+        elif c.lower() in ("paper", "p"):
+            player_answer = "Paper"
+        
+        elif c.lower() in ("scissor", "s"):
+            player_answer = "Scissor"
+            
+        if bot_answer == player_answer:
+            return await ctx.send(f"Bot picked {bot_answer}, so did you... It's a tie!")
+        
+        if bot_answer == "Rock" and player_answer == "Scissor":
+            return await ctx.send("Bot picked Rock, you picked Scissor... Bot wins!")
+        
+        if bot_answer == "Scissor" and player_answer == "Paper":
+            return await ctx.send("Bot picked Scissor, you picked Paper... Bot wins!")
+        
+        if bot_answer == "Paper" and player_answer == "Rock":
+            return await ctx.send("Bot picked Paper, you picked Rock... Bot wins!")
+        
+        await ctx.send(f"Bot picked {bot_answer}, you picked {player_answer}... You win!")
 
 
 def setup(bot):
